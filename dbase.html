@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Kabupaten Sleman</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="home1.html">Home</a></li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Peta <span
+                            class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="cek.html">COVID-19</a></li>
+                        <li><a href="home.html">Jumlah Penduduk</a></li>
+                    </ul>
+                <li><a href="dbase.html">Input Database Sleman</a></li>
+                <li><a href="tampildbse.php">Hasil Database</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <h2>Form Input</h2>
+    <form action="input.php" onsubmit="return validateForm()" method="post">
+        <label for="kecamatan">Kecamatan:</label><br>
+        <input type="text" id="kecamatan" name="kecamatan" value=""><br>
+
+        <label for="longitude">Longitude:</label><br>
+        <input type="text" id="longitude" name="longitude" value=""><br>
+
+        <label for="lattitude">Latitude:</label><br>
+        <input type="text" id="lattitude" name="lattitude"  value=""><br>
+
+        <label for="luas">Luas:</label><br>
+        <input type="text" id="luas" name="luas" value=""><br>
+        <label for="jumlah_penduduk">Jumlah Penduduk:</label><br>
+        <input type="text" id="jumlah_penduduk" name="jumlah_penduduk" value=""><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <p id="informasi"></p>
+    <script>
+        function validateForm() {
+
+            let luas = document.getElementById("luas").value;
+            let text = "";
+            if (isNaN(luas) || luas < 1) {
+                text = "Data luas harus angka dan tidak boleh bernilai negatif";
+                // stop the form submission
+                event.preventDefault();
+            }
+            document.getElementById("informasi").innerHTML = text;
+
+
+        }
+    </script>
+</body>
+
+</html>
